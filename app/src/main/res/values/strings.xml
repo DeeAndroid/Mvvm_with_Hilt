@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="city_name">Bengaluru</string>
+    <string name="celcius"> °C</string>
+    <string name="error">Something\nwent wrong\nat our end</string>
+    <string name="app_id">9b8cb8c7f11c077f8c4e217974d9ee40</string>
+    <string name="action_retry">RETRY</string>
+</resources>

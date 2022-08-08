@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="day"
+        type="String" />
+        <variable
+            name="temp"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:minHeight="@dimen/_96sp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:lineHeight="@dimen/_19sp"
+            android:paddingTop="@dimen/_16dp"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_16sp"
+            android:text="@{day!=null ? day : ``}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="tuesday" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:lineHeight="@dimen/_19sp"
+            android:paddingTop="@dimen/_16dp"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_16sp"
+            android:text="@{temp!=null ? temp + @string/celcius  : ``}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="26" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

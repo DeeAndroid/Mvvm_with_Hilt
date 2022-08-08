@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="city_data"
+            type="com.weather.data.network.api.response.Temprature" />
+
+        <variable
+            name="isError"
+            type="Boolean" />
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="city_temp"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_screen_bg"
+        tools:context=".MainActivity">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTemprature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_black"
+            android:lineHeight="@dimen/_112sp"
+            android:paddingTop="@dimen/_56dp"
+            android:text="@{city_temp!=null ?  city_temp  + @string/celcius  : ``}"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_96sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="67" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_thin"
+            android:lineHeight="@dimen/_52sp"
+            android:text="@{city_data!=null ? city_data.name : ``}"
+            android:textColor="@color/city_blue"
+            android:textSize="@dimen/_36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTemprature"
+            tools:text="Bengalore" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvForecast"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_62dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/tvCity"
+            tools:listitem="@layout/item_forecast" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@{isError==true ? @color/error_state_bg : @color/main_screen_bg , default= @color/main_screen_bg}"
+            android:visibility="@{isLoading || isError?View.VISIBLE:View.GONE,default=visible}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSync"
+                android:layout_width="@dimen/_96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/ic_sync"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="@{isLoading ? View.VISIBLE:View.GONE,default=visible}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/error"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_54sp"
+                android:visibility="@{isError==true?View.VISIBLE:View.GONE,default=gone}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/error" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_44dp"
+                android:background="@color/button_primary"
+                android:text="@string/action_retry"
+                android:textColor="@color/white"
+                android:visibility="@{isError==true?View.VISIBLE:View.GONE,default=gone}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvError" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
