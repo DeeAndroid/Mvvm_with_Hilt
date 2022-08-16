@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="day"
-        type="String" />
+
+        <variable
+            name="day"
+            type="String" />
+
         <variable
             name="temp"
             type="String" />
@@ -25,9 +27,9 @@
             android:fontFamily="@font/roboto_regular"
             android:lineHeight="@dimen/_19sp"
             android:paddingTop="@dimen/_16dp"
+            android:text="@{day!=null ? day : ``}"
             android:textColor="@color/text_primary"
             android:textSize="@dimen/_16sp"
-            android:text="@{day!=null ? day : ``}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,9 +42,9 @@
             android:fontFamily="@font/roboto_regular"
             android:lineHeight="@dimen/_19sp"
             android:paddingTop="@dimen/_16dp"
+            android:text="@{temp!=null ? temp + @string/celcius  : ``}"
             android:textColor="@color/text_primary"
             android:textSize="@dimen/_16sp"
-            android:text="@{temp!=null ? temp + @string/celcius  : ``}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
